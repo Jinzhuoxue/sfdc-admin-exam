@@ -1,0 +1,35 @@
+{
+  "name": "sfdc-admin-exam",
+  "version": "0.0.1",
+  "private": true,
+  "devDependencies": {
+    "enzyme": "^2.8.2",
+    "react-addons-test-utils": "^15.5.1",
+    "react-scripts": "^1.0.2"
+  },
+  "dependencies": {
+    "axios": "^0.16.2",
+    "classnames": "^2.2.5",
+    "fs": "0.0.1-security",
+    "fs-extra": "^4.0.1",
+    "json-server": "^0.12.0",
+    "jsonfile": "^3.0.1",
+    "load-json-file": "^2.0.0",
+    "prop-types": "^15.5.10",
+    "react": "^15.5.0",
+    "react-dom": "^15.5.0",
+    "react-redux": "^5.0.5",
+    "react-test-renderer": "^15.5.4",
+    "redux": "^3.5.2",
+    "store": "^2.0.12",
+    "todomvc-app-css": "^2.1.0",
+    "underscore": "^1.8.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "test": "react-scripts test",
+    "json:server": "json-server --watch data.json"
+  }
+}

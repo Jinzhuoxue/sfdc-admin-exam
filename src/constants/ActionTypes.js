@@ -1,0 +1,12 @@
+export const MARK_REVIEW = 'MARK_REVIEW'
+export const NEXT_QUESTION = 'NEXT_QUESTION'
+export const PREV_QUESTION = 'PREV_QUESTION'
+export const OPTION_SELECTED = 'OPTION_SELECTED'
+export const OPTION_DELETED  = 'OPTION_DELETED'
+
+export const ADD_TODO = 'ADD_TODO'
+export const DELETE_TODO = 'DELETE_TODO'
+export const EDIT_TODO = 'EDIT_TODO'
+export const COMPLETE_TODO = 'COMPLETE_TODO'
+export const COMPLETE_ALL = 'COMPLETE_ALL'
+export const CLEAR_COMPLETED = 'CLEAR_COMPLETED'
