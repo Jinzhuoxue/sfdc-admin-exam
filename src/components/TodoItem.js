@@ -18,7 +18,7 @@ export default class TodoItem extends Component {
     const {qid} = this.props;
 
     if(qid !== nextProps.qid){
-      this.setState({checked: false})
+      this.setState({checked: this.props.checked})
     }
   }
 

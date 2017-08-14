@@ -23,8 +23,8 @@ export default function exam(state = initialState, action) {
           questions : state.questions.map(question =>
             question.id === action.qid ?
               { ...question,
-                selectedAnswer : question.selectedAnswer.concat([action.oid]),
-                completed : _.isEmpty(_.difference(question.answer, question.selectedAnswer.concat([action.oid])))
+                selectedAnswer : _.union(question.selectedAnswer, [action.oid]),
+                completed : !_.isEmpty(_.union(question.selectedAnswer, [action.oid])) && _.isEmpty(_.difference(_.union(question.selectedAnswer, [action.oid]),question.answer))
               } : question
           )
         }
@@ -36,7 +36,7 @@ export default function exam(state = initialState, action) {
               question.id === action.qid ?
                 { ...question,
                   selectedAnswer: question.selectedAnswer.filter( val => val !== action.oid),
-                  completed : _.isEmpty(_.difference(question.answer, question.selectedAnswer.filter( val => val !== action.oid)))
+                  completed : !_.isEmpty(question.selectedAnswer.filter( val => val !== action.oid)) && _.isEmpty(_.difference(question.selectedAnswer.filter( val => val !== action.oid), question.answer))
                 } :
                 question
             )
@@ -56,13 +56,25 @@ export default function exam(state = initialState, action) {
       const {questions} = state
       let nextQuestionId = state.selectedQuestionId+1 > questions.length ? 1 : state.selectedQuestionId+1
       store.set('nextQuestionId', nextQuestionId)
-      return {...state, selectedQuestionId : nextQuestionId}
+      return {...state,
+              selectedQuestionId : nextQuestionId,
+              questions : state.questions.map(question =>
+              question.id === nextQuestionId ?
+                { ...question, selectedAnswer: []} :
+                question)
+              }
 
     case PREV_QUESTION:
         console.log(state.selectedQuestionId);
         let prevQuestionId = state.selectedQuestionId-1 || state.selectedQuestionId
         store.set('nextQuestionId', prevQuestionId)
-        return {...state, selectedQuestionId : prevQuestionId}
+        return {...state,
+                selectedQuestionId : prevQuestionId,
+                questions : state.questions.map(question =>
+                question.id === prevQuestionId ?
+                  { ...question, selectedAnswer: []} :
+                  question)
+                }
     default:
       return state
   }
